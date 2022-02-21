@@ -17,4 +17,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: main.pdf
-          tag_name: action_auto_release-${{ NOW }}
+          tag_name: action_auto_release-${{ env.NOW }}
