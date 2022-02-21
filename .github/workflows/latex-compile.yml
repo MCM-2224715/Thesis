@@ -15,4 +15,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: main.pdf
-          tag_name: action_auto_release
+          tag_name: action_auto_release-${{ steps.date.outputs.date }}
