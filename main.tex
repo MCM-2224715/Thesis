@@ -1,4 +1,5 @@
 \documentclass{mcmthesis}
+\usepackage{physics}
 \usepackage{float}
 \mcmsetup{
   tcn=2224715,
@@ -15,6 +16,7 @@
     \noalign {\ifnum 0=`}\fi \hrule height 1pt
     \futurelet \reserved@a \@xhline
 }
+\newcommand{\der}{\mathrm{d}}
 \makeatother
 
 \title{Replace with your title}
@@ -115,5 +117,41 @@
     \end{aligned}
   \end{equation}
 
+  In our data process, we took the trace distance between points and start point as the indicator $\xi_{i}$, and smoothed the $x, y, z$ coordinate respectively. The result is visualized as below. 
+
+  \section{Model}
+  \subsection{Model Overview}
+
+  \subsection{Physical Model of Cyclist}
+  To simulate the kinetic processes of a cyclist and his/her bicycle, a force analysis is inevitable. In general, the resistance on a cyclist and his/her bicycle includes air drug, air friction, rolling resistance, the downward slope component of gravity. \\
+  The air drug is normal to the surface of the resisted body, felling like the pressure of the wind. It can be represented as: 
+  \begin{equation}
+    \begin{aligned}
+      f_{a} = \frac{1}{2} c_{D} \rho S v_{r} ^{2}
+    \end{aligned}
+  \end{equation}
+  The factor $c_D$ is the drag coefficient of air, $\rho$ is the density of air, $S$ is the frontal area of cyclist and his/her bicycle, $v_{r}$ is the relative velocity between air and cyclist. \\
+  The air friction is tangential to the surface. For an unstreamlined body such as a bicycle and rider, the pressure effect is much the larger. As a result, the air friction can be ignored.\\
+  The rolling resistance can be represented as: 
+  \begin{equation}
+    \begin{aligned}
+      f_{r} = \frac{F_{N} \mu_{R}}{R}
+    \end{aligned}
+  \end{equation}
+  The $F_{N}$ is the pressure of the wheels; $R$ is the radius of the wheels; $\mu_{R}$ is the rolling resistance coefficient, which varies with the condition of the road, the material of the wheel and the air pressure of the pneumatic tire. \\
+  The downward slope component of gravity can be represented as: 
+  \begin{equation}
+    \begin{aligned}
+      f_{G} = mg\sin \theta
+    \end{aligned}
+  \end{equation}
+  Where $m$ is the total mass of cyclist and bicycle, $g$ is the gravitational acceleration, $\theta$, is the angle between slope and horizontal. 
+  In this way, the kinetic equation of cyclist and bicycle can be represented as:
+  \begin{equation}
+    \begin{aligned}
+      \eta P \dif t = \left[ \frac{1}{2} c_{D} \rho S \left(v - \frac{{\bf v\cdot v_{w}}}{v}\right)^{2} + \frac{mg\cos \theta \mu_{R}}{R} + mg\sin \theta \right]v\dif t + mv \dif v
+    \end{aligned}
+  \end{equation}
+  where $\eta$ is the mechanical efficiency of bicycle, $P$ is the output of the cyclist, ${\bf v,v_{w}}$ is the vector f velocity of cyclist and wind respectively.
 
   \end{document}
